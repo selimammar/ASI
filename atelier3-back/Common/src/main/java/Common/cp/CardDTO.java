@@ -1,13 +1,9 @@
 package Common.cp;
 
-
-
 public class CardDTO {
-	 private Integer id;
 		
-		// Creation de tous les attributs d'une carte en ajoutant le @Column
-		// @Column annotation is used for Adding the column the name in the table of a particular MySQL database.
-
+	    private Integer id;
+	 	
 	    private String name;
 	    private String description;
 	    private String imgUrl;

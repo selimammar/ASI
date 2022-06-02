@@ -1,6 +1,8 @@
 package com.sp.model;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+
 import java.util.*;
 
 import javax.persistence.Entity;
@@ -33,6 +35,7 @@ public class User {
     private Integer sold = 100;
 	
 	@Column(name = "idCard")
+	@ElementCollection
     private List<Integer> ListIdCard;
 	
 

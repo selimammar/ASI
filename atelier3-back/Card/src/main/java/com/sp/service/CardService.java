@@ -32,9 +32,10 @@ public class CardService {
 	}
 	
 	
-	public CardDTO create(CardDTO card) {
-        this.cardRepository.save(this.CardDTOTOCard(card));
-        return card;
+	public CardDTO create(CardDTO cardDTO) {
+		Card cardcreate = this.cardRepository.save(this.CardDTOTOCard(cardDTO));
+		return this.CardToCardDTO(cardcreate);
+        
     }
 	
 	public boolean delete(CardDTO card) {
