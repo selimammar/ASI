@@ -4,7 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 public class RegisterRequest {
-	@NotNull(message = "PrÃ©nom vide" )
+	@NotNull(message = "Prenom vide" )
 	String name;
 	
 	@NotNull(message = "Nom vide" )

@@ -1,6 +1,5 @@
 package com.sp.controller;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,9 +19,6 @@ public class CardRestCrt {
 	@Autowired
 	CardService cardService;
 	
-	public CardRestCrt(CardService cardService) {
-		this.cardService = cardService;
-	}
 	
 	@PostMapping("/card")
 	public CardDTO create(@RequestBody CardDTO card) {
@@ -30,28 +26,28 @@ public class CardRestCrt {
 	}
 	
 	@PostMapping("/card/{id}")
-	public CardDTO update(@PathVariable int id, CardDTO card) {
-		return this.cardService.update(card);
+	public CardDTO update(@PathVariable Integer id, CardDTO card) {
+		return this.cardService.update(id,card);
 	}
 	
 	@DeleteMapping("/card/{id}")
-	public boolean delete(@PathVariable int id, CardDTO card) {
+	public boolean delete(@PathVariable Integer id, CardDTO card) {
 		return this.cardService.delete(card);
 	}
 	
 	@GetMapping("/card/{id}")
-	public Optional<CardDTO> show(@PathVariable int id) {
-		return this.cardService.show((Integer) id);
+	public CardDTO getCard(@PathVariable Integer id) {
+		return this.cardService.getCard((Integer) id);
 	}
 	
 	@GetMapping("/cards/mycards/{playerId}")
-	public Iterable<CardDTO> getMyCards(@PathVariable int playerId){
-		return this.cardService.getMyCards(playerId);
+	public Iterable<CardDTO> getCardByPlayerId(@PathVariable int playerId){
+		return this.cardService.getCardByPlayerId(playerId);
 	}
 	
 	@GetMapping("/cards")
-	public Iterable<CardDTO> getCards() {
-		return this.cardService.getCards();
+	public Iterable<CardDTO> getAllCards() {
+		return this.cardService.getAllCards();
 	}
 	
 	@GetMapping("/cards/buyable")

@@ -4,14 +4,11 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.sp.model.Card;
 
-import Common.cp.CardDTO;
-
-public interface CardRepository extends CrudRepository<CardDTO, Integer> {
+public interface CardRepository extends CrudRepository<Card, Integer> {
 	
-	 //@Query("select c from Card c where c.ownerId = ?1")
-	 List<CardDTO> findByPlayerId(Integer ownerId);
+	 public List<Card> findByPlayerId(Integer ownerId);
 
-	 //@Query("select c from Card c where c.isToSell = ?1")
-	 Iterable<CardDTO> findByIsToSell(boolean value);
+	 public Iterable<Card> findByIsToSell(boolean value);
 }
