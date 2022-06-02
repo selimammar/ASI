@@ -4,6 +4,7 @@ import com.sp.requests.LoginRequest;
 import com.sp.requests.RegisterRequest;
 import com.sp.service.UserService;
 
+import Common.cp.CardDTO;
 import Common.cp.UserDTO;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,6 @@ public class UserRestCrt {
 
 	@Autowired
 	UserService userService;
-
 	
 	@PostMapping("/auth/login")
 	public UserDTO login(@RequestBody LoginRequest loginRequest) {
@@ -39,6 +39,11 @@ public class UserRestCrt {
 	@GetMapping("/user/{id}")
 	public UserDTO getUser(@PathVariable int id){
 		return this.userService.getUserById(id);
+	}
+	
+	@GetMapping("/users")
+	public Iterable<UserDTO> getAllPlayers() {
+		return this.userService.getAllPlayers();
 	}
 	
 }

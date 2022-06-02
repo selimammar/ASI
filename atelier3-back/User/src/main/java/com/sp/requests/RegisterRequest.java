@@ -1,9 +1,12 @@
  package com.sp.requests;
 
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 public class RegisterRequest {
+	
+	
 	@NotNull(message = "Prenom vide" )
 	String name;
 	
@@ -32,6 +35,7 @@ public class RegisterRequest {
 		this.email = email;
 	}
 	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}

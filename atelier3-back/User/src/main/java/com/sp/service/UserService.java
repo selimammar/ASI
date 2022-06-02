@@ -2,13 +2,17 @@ package com.sp.service;
 
 
 import java.util.*;
+
+
 import com.sp.model.User;
 import com.sp.repository.UserRepository;
 import com.sp.requests.LoginRequest;
 import com.sp.requests.RegisterRequest;
 
+
 import Common.cp.UserDTO;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,12 +24,16 @@ public class UserService {
     UserRepository userRepository;
 	
 	private UserDTO UserToUserDTO(User user){
-		UserDTO userDto = new UserDTO(user.getEmail(),user.getName(),user.getSurname(),user.getPassword(),user.getSold(),user.getListIdCard());
-		return userDto;
+		UserDTO userDTO = new UserDTO();
+		//UserDTO userDto = new UserDTO(user.getId(),user.getEmail(),user.getName(),user.getSurname(),user.getPassword(),user.getSold(),user.getListIdCard());
+		BeanUtils.copyProperties(user,userDTO);
+		return userDTO;
 	}
 	
 	private User UserDTOToUser(UserDTO userDTO){
-		User user = new User(userDTO.getEmail(),userDTO.getName(),userDTO.getSurname(),userDTO.getPassword(),userDTO.getSold(),userDTO.getListIdCard());
+		User user = new User();
+		//User user = new User(userDTO.getEmail(),userDTO.getName(),userDTO.getSurname(),userDTO.getPassword(),userDTO.getSold(),userDTO.getListIdCard());
+		BeanUtils.copyProperties(userDTO,user);
 		return user;
 	}
 
@@ -64,7 +72,7 @@ public class UserService {
 		return this.UserToUserDTO(userupdate);
     }
     
-    public Iterable<UserDTO> getAllUsers() {
+    public Iterable<UserDTO> getAllPlayers() {
 		Iterable<User> users = userRepository.findAll();
 		List<UserDTO> usersDTO = new ArrayList<UserDTO>();
 		for(User user : users){
@@ -82,7 +90,6 @@ public class UserService {
 			return null;
 		}
 	}
-
-
+   
 }
 

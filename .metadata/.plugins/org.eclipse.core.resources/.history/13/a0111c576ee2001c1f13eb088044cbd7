@@ -1,0 +1,71 @@
+package com.sp.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sp.model.Card;
+import com.sp.repository.CardRepository;
+
+import Common.cp.CardDTO;
+
+@Service
+public class CardService {
+	
+	@Autowired
+    CardRepository cardRepository;
+	
+	private CardDTO CardToCardDTO(Card card){
+		CardDTO cardDTO = new CardDTO(card.getName(),card.getDescription(),card.getImgUrl(),card.getFamily(),card.getAffinity(),card.getHp(),card.getEnergy(),card.getAttack(),card.getDefense(),card.getPlayerId(),card.getPrice(),card.getIsToSell());
+		BeanUtils.copyProperties(card, cardDTO);
+		return cardDTO;
+	}
+	
+	private Card CardDTOTOCard(CardDTO cardDTO){
+		Card card = new Card(cardDTO.getName(),cardDTO.getDescription(),cardDTO.getImgUrl(),cardDTO.getFamily(),cardDTO.getAffinity(),cardDTO.getHp(),cardDTO.getEnergy(),cardDTO.getAttack(),cardDTO.getDefense(),cardDTO.getPlayerId(),cardDTO.getPrice(),cardDTO.getIsToSell());
+		BeanUtils.copyProperties(cardDTO, card);
+		return card;
+	}
+	
+	
+	public CardDTO create(CardDTO card) {
+        this.cardRepository.save(this.CardDTOTOCard(card));
+        return card;
+    }
+	
+	public boolean delete(CardDTO card) {
+        this.cardRepository.delete(this.CardDTOTOCard(card));
+        return true;
+    }
+	
+	public CardDTO update(CardDTO card) {
+        this.cardRepository.save(this.CardDTOTOCard(card));
+        return card;
+    }
+	
+	public Optional<CardDTO> show(Integer id) {
+        return this.cardRepository.findById(id);
+    }
+
+	public Iterable<CardDTO> getMyCards(int playerId){
+		return this.cardRepository.findByPlayerId(playerId);
+	}
+	
+	public Iterable<CardDTO> getCards() {
+		Iterable<Card> cards = cardRepository.findAll();
+		List<CardDTO> cardsDTO = new ArrayList<CardDTO>();
+		for (Card card : cards) {
+			cardsDTO.add(this.CardToCardDTO(card));
+		}
+		return cardsDTO;
+    }
+	
+	public Iterable<CardDTO> getCardsBuyable(){
+        return this.cardRepository.findByIsToSell(true);
+    }
+
+}

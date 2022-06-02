@@ -1,0 +1,61 @@
+package com.sp.service;
+
+
+import java.util.*;
+import com.sp.model.User;
+import com.sp.repository.UserRepository;
+import com.sp.requests.LoginRequest;
+import com.sp.requests.RegisterRequest;
+
+import Common.cp.UserDTO;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+@Service
+public class UserService {
+   
+	@Autowired
+    UserRepository userRepository;
+
+    public UserDTO login(LoginRequest loginRequest) {
+        UserDTO user = this.userRepository.findByEmail(loginRequest.getEmail());
+        if (user != null) {
+            if (user.getPassword().equals(loginRequest.getPassword())) {
+                return user;
+            }
+        }
+        throw new ResponseStatusException(null);
+    }
+
+    public UserDTO register(RegisterRequest registerRequest) {
+
+        UserDTO user = new UserDTO(registerRequest.getEmail(), registerRequest.getName(), registerRequest.getSurname(), registerRequest.getPassword(), registerRequest.getSold(),generateRandomArray(5));
+        return this.userRepository.save(user);
+    }
+    
+    public UserDTO getUserById(Integer id) {
+        UserDTO user = this.userRepository.findById(id).get();
+        return user;
+    }
+    
+    public List<Integer> generateRandomArray(int n){
+        ArrayList<Integer> list = new ArrayList<Integer>(n);
+        Random random = new Random();
+        
+        for (int i = 0; i < n; i++)
+        {
+            list.add(random.nextInt(100));
+        }
+       return list;
+    } 
+    
+    public UserDTO update(UserDTO user) {
+    	this.userRepository.save(user);
+    	return user;
+    }
+
+
+}
+

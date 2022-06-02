@@ -34,7 +34,7 @@ public class CardDTO {
 	        this.isToSell = false;
 	    }
 		
-	    public CardDTO(int id, String name, String description, String imgUrl, String family, String affinity, Integer hp,
+	    public CardDTO(Integer id, String name, String description, String imgUrl, String family, String affinity, Integer hp,
 	            Integer energy, Integer attack, Integer defense, Integer playerId, Integer price, Boolean status) {
 	    	this.id = id;
 	    	this.name = name;
