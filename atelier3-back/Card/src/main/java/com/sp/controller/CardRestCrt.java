@@ -22,6 +22,7 @@ public class CardRestCrt {
 	
 	@PostMapping("/card")
 	public CardDTO create(@RequestBody CardDTO card) {
+		System.out.println(card);
 		return this.cardService.create(card);
 	}
 	

@@ -3,7 +3,6 @@ package Common.cp;
 public class CardDTO {
 		
 	    private Integer id;
-	 	
 	    private String name;
 	    private String description;
 	    private String imgUrl;
@@ -20,7 +19,7 @@ public class CardDTO {
 	    public Boolean isToSell;
 	
 	 public CardDTO() {
-	    	
+	    	this.setId(0);
 	    	this.name = "";
 	    	this.description = "";
 	        this.imgUrl = "";
@@ -35,8 +34,9 @@ public class CardDTO {
 	        this.isToSell = false;
 	    }
 		
-	    public CardDTO(String name, String description, String imgUrl, String family, String affinity, Integer hp,
+	    public CardDTO(int id, String name, String description, String imgUrl, String family, String affinity, Integer hp,
 	            Integer energy, Integer attack, Integer defense, Integer playerId, Integer price, Boolean status) {
+	    	this.id = id;
 	    	this.name = name;
 	        this.description = description;
 	        this.imgUrl = imgUrl;
