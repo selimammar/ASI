@@ -14,7 +14,6 @@ public class Card {
 	// strategy = GenerationType.IDENTITY : La génération de la clé primaire se fera à partir d’une Identité propre au SGBD. Il utilise un type de colonne spéciale à la base de données
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 	
 	// Creation de tous les attributs d'une carte en ajoutant le @Column

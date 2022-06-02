@@ -20,14 +20,16 @@ public class CardService {
     CardRepository cardRepository;
 	
 	private CardDTO CardToCardDTO(Card card){
-		CardDTO cardDTO = new CardDTO(card.getName(),card.getDescription(),card.getImgUrl(),card.getFamily(),card.getAffinity(),card.getHp(),card.getEnergy(),card.getAttack(),card.getDefense(),card.getPlayerId(),card.getPrice(),card.getIsToSell());
-		//BeanUtils.copyProperties(card, cardDTO);
+		CardDTO cardDTO = new CardDTO();
+		//CardDTO cardDTO = new CardDTO(card.getName(),card.getDescription(),card.getImgUrl(),card.getFamily(),card.getAffinity(),card.getHp(),card.getEnergy(),card.getAttack(),card.getDefense(),card.getPlayerId(),card.getPrice(),card.getIsToSell());
+		BeanUtils.copyProperties(card, cardDTO);
 		return cardDTO;
 	}
 	
 	private Card CardDTOTOCard(CardDTO cardDTO){
-		Card card = new Card(cardDTO.getName(),cardDTO.getDescription(),cardDTO.getImgUrl(),cardDTO.getFamily(),cardDTO.getAffinity(),cardDTO.getHp(),cardDTO.getEnergy(),cardDTO.getAttack(),cardDTO.getDefense(),cardDTO.getPlayerId(),cardDTO.getPrice(),cardDTO.getIsToSell());
-		//BeanUtils.copyProperties(cardDTO, card);
+		Card card = new Card();
+		//Card card = new Card(cardDTO.getName(),cardDTO.getDescription(),cardDTO.getImgUrl(),cardDTO.getFamily(),cardDTO.getAffinity(),cardDTO.getHp(),cardDTO.getEnergy(),cardDTO.getAttack(),cardDTO.getDefense(),cardDTO.getPlayerId(),cardDTO.getPrice(),cardDTO.getIsToSell());
+		BeanUtils.copyProperties(cardDTO, card);
 		return card;
 	}
 	
