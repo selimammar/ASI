@@ -17,14 +17,6 @@ public class TransactionService {
 	@Autowired
 	TransactionRepository transactionRepository;
 	
-	private final UserDTO userDTO;
-	private final CardDTO cardDTO;
-	
-	
-	public TransactionService(UserDTO userDTO,CardDTO cardDTO) {
-		this.cardDTO = cardDTO;
-        this.userDTO = userDTO;
-	}
 	
 	public CardDTO buy(Integer id_card, Integer buyer_id) {
 		
@@ -48,12 +40,12 @@ public class TransactionService {
                 return card;
 			}
 			else {
-				throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "Your balance is not enough");
+				throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "Votre solde est insuffisant");
 				
 			}
 			
 		}
-		throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "Card not found");
+		throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "Carte non trouvee");
 		
 		
 	}
@@ -67,10 +59,10 @@ public class TransactionService {
                 Comm.postRemoteCard(card);
                 return card;
             }else{
-                throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "You are not the owner of this card");
+                throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "Vous n'etes pas le propriétaire de cette carte");
             }
         }
-        throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "Card not found");
+        throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "Carte non trouvee");
     }
 	
 	

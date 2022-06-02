@@ -12,8 +12,8 @@ import Common.cp.UserDTO;
 
 public class Comm {
 	
-	private static final String URL_CARD="http://localhost:8082/card"; 
-	private static final String URL_USER="http://localhost:8083/user"; 
+	private static final String URL_CARD="http://localhost:8080/card"; 
+	private static final String URL_USER="http://localhost:8082/user"; 
 	
 	public static CardDTO getRemoteCard(int id) {
 
