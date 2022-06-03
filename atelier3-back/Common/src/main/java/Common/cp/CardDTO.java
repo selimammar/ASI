@@ -1,5 +1,6 @@
 package Common.cp;
 
+
 public class CardDTO {
 		
 	    private Integer id;
