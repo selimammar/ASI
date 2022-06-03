@@ -485,3 +485,83 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2022-06-03 15:06:58.372
+!MESSAGE Could not lookup required component
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not lookup required component
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lookup(MavenImpl.java:1294)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.isUnavailable(MavenImpl.java:856)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.isUnavailable(BuildPathManager.java:353)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getAttachedSourcesAndJavadoc(BuildPathManager.java:937)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.scheduleDownload(BuildPathManager.java:915)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.configureAttachedSourcesAndJavadoc(BuildPathManager.java:343)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getClasspath(BuildPathManager.java:270)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getClasspath(BuildPathManager.java:413)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getClasspath(BuildPathManager.java:393)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getClasspath(BuildPathManager.java:421)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.updateClasspath(BuildPathManager.java:206)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.updateClasspath(DownloadSourcesJob.java:207)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:185)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.codehaus.plexus.component.repository.exception.ComponentLookupException: java.util.NoSuchElementException
+      role: org.apache.maven.repository.RepositorySystem
+  roleHint: 
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:267)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:255)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:249)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lookup(MavenImpl.java:1292)
+	... 13 more
+Caused by: java.util.NoSuchElementException
+	at java.base/java.util.Collections$EmptyIterator.next(Collections.java:4310)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:263)
+	... 16 more
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2022-06-03 15:06:58.373
+!MESSAGE Could not lookup required component
+!STACK 0
+org.codehaus.plexus.component.repository.exception.ComponentLookupException: java.util.NoSuchElementException
+      role: org.apache.maven.repository.RepositorySystem
+  roleHint: 
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:267)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:255)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:249)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lookup(MavenImpl.java:1292)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.isUnavailable(MavenImpl.java:856)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.isUnavailable(BuildPathManager.java:353)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getAttachedSourcesAndJavadoc(BuildPathManager.java:937)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.scheduleDownload(BuildPathManager.java:915)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.configureAttachedSourcesAndJavadoc(BuildPathManager.java:343)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getClasspath(BuildPathManager.java:270)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getClasspath(BuildPathManager.java:413)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getClasspath(BuildPathManager.java:393)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.getClasspath(BuildPathManager.java:421)
+	at org.eclipse.m2e.jdt.internal.BuildPathManager.updateClasspath(BuildPathManager.java:206)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.updateClasspath(DownloadSourcesJob.java:207)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:185)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.util.NoSuchElementException
+	at java.base/java.util.Collections$EmptyIterator.next(Collections.java:4310)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:263)
+	... 16 more
+
+!ENTRY org.eclipse.m2e.core 4 -1 2022-06-03 15:06:59.427
+!MESSAGE Could not lookup required component
+!STACK 0
+org.codehaus.plexus.component.repository.exception.ComponentLookupException: java.util.NoSuchElementException
+      role: org.apache.maven.execution.MavenExecutionRequestPopulator
+  roleHint: 
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:267)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:255)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:249)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lookup(MavenImpl.java:1292)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.createExecutionRequest(MavenImpl.java:238)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.newExecutionRequest(MavenExecutionContext.java:94)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:127)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.execute(MavenImpl.java:1374)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.util.NoSuchElementException
+	at java.base/java.util.Collections$EmptyIterator.next(Collections.java:4310)
+	at org.codehaus.plexus.DefaultPlexusContainer.lookup(DefaultPlexusContainer.java:263)
+	... 10 more
