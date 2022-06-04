@@ -28,10 +28,11 @@ public class TransactionRestCrt {
         return this.transactionService.buy(cardId, playerId);
     }
 	
-	@RequestMapping(method = RequestMethod.PUT, value="/transaction/sell/{id1}/{id2}")
-    public CardDTO sell(@PathVariable Integer id1, @PathVariable Integer id2, @RequestBody SellRequest sellRequest) {
+	@RequestMapping(method = RequestMethod.PUT, value="/transaction/sell/{id1}/{id2}/{id3}")
+    public CardDTO sell(@PathVariable Integer id1, @PathVariable Integer id2, @PathVariable Integer id3) {
 		Integer cardId=id1;
 		Integer playerId=id2;
-        return this.transactionService.sell(cardId, playerId, sellRequest.getPrice());
+		Integer price=id3;
+        return this.transactionService.sell(cardId, playerId,price);
     }
 }

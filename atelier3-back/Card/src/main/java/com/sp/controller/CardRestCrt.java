@@ -54,5 +54,5 @@ public class CardRestCrt {
 	public Iterable<CardDTO> getCardsBuyable() {
 		return this.cardService.getCardsBuyable();
 	}
-
+	
 }
