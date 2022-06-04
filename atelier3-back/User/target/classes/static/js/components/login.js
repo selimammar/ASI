@@ -1,11 +1,11 @@
-import { environment } from "../environment/environment.js";
-import AuthService from "../services/auth.service.js";
+import UserService from "../services/auth.service.js";
+
 class LoginComponent {
 
-    constructor(form, authService) {
+    constructor(form, userService) {
         this.form = form;
         this.form.onsubmit = this.onFormSubmit.bind(this);
-        this.authService = authService;
+        this.userService = userService;
     }
 
 
@@ -15,7 +15,7 @@ class LoginComponent {
         var object = {};
         formData.forEach((value, key) => object[key] = value);
         try {
-            const response = await this.authService.login(object);
+            const response = await this.userService.login(object);
             localStorage.setItem('token', response.id);
             window.location.replace("./cardList.html");
         } catch (e) {
@@ -25,7 +25,7 @@ class LoginComponent {
     }
 }
 
-new LoginComponent(document.getElementById('form'), new AuthService());
+new LoginComponent(document.getElementById('form'), new UserService());
 
 
 
