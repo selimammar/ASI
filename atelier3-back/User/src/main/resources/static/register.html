@@ -14,7 +14,50 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 
 </head>
+<script>
+    async function RegisterUser() {
+    // appel de la création d'un user
+    var firstname = document.getElementById("firstname").value;
+    var lastname = document.getElementById("lastname").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var sold = 0;
 
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "email": email,
+        "name": lastname,
+        "surname": firstname,
+        "password": password,
+        "sold": sold,
+        
+    });
+
+    let response = await fetch('http://localhost:8082/auth/register', { method: 'POST', headers: { 'Content-Type': 'application/json;charset=utf-8' }, body: raw });
+    let result = await response.json(); alert(result.message);
+
+    // var requestOptions = {
+    // method: 'POST',
+    // headers: myHeaders,
+    // body: raw,
+    // redirect: 'follow'
+    // };
+
+    // console.log(requestOptions);
+
+    // fetch("http://localhost:8082/auth/register", requestOptions)
+    // .then(response => response.text())
+    // .then(function(response){
+    //     console.log(response);
+    // })
+    // .then(result => console.log(result))
+    // .catch(error => console.log('error', error));
+    // console.log("Register d'un user");
+}
+</script>
 <body>
 
     <div class="ui container">
@@ -24,25 +67,25 @@
             <form class="ui form" id="form">
                 <div class="field">
                     <label>Lastname</label>
-                    <input type="text" name="lastname" placeholder="Lastname">
+                    <input type="text" name="lastname" placeholder="Lastname" id="lastname">
                 </div>
 
                 <div class="field">
                     <label>Firstname</label>
-                    <input type="text" name="firstname" placeholder="Firstname">
+                    <input type="text" name="firstname" placeholder="Firstname" id="firstname">
                 </div>
 
                 <div class="field">
                     <label>Email</label>
-                    <input type="text" name="email" placeholder="Email">
+                    <input type="text" name="email" placeholder="Email" id="email">
                 </div>
 
                 <div class="field">
                     <label>Password</label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" id="password">
                 </div>
 
-                <button class="ui button" type="submit">Submit</button>
+                <button class="ui button" type="submit" onclick="RegisterUser()">Submit</button>
             </form>
         </div>
 
@@ -58,7 +101,7 @@
         </div>
     </div>
 
-    <script src="./js/components/register.js" type="module"></script>
+
 
 </body>
 

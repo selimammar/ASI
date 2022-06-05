@@ -1,12 +1,11 @@
-import { environment } from "../environment/environment.js";
-import AuthService from "../services/auth.service.js";
+import UserService from "../services/auth.service.js";
+
 class RegisterComponent {
-    constructor(form, authService){
+    constructor(form, userService){
         this.form = form; 
         this.form.onsubmit = this.onFormSubmit.bind(this);
-        this.authService = authService;
+        this.authService = userService;
     }
-
 
     async onFormSubmit(e){
         e.preventDefault();
@@ -14,15 +13,17 @@ class RegisterComponent {
         var object = {};
         formData.forEach((value, key) => object[key] = value);
         try{
-            const user = await this.authService.register(object);
+            const user = await this.userService.register(object);
             localStorage.setItem('token', user.id);
-            window.location.replace("./cardList.html");
+            console.log("OK")
+            //window.location.replace("./cardList.html");
         }catch(e){
             alert("Une erreur est survenue");
         }
     }
 }
-new RegisterComponent(document.getElementById('form'), new AuthService());
+new RegisterComponent(document.getElementById('form'), new UserService());
+
 
 
 
