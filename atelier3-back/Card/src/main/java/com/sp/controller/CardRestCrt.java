@@ -26,7 +26,7 @@ public class CardRestCrt {
 	}
 	
 	@PostMapping("/card/{id}")
-	public CardDTO update(@PathVariable Integer id, CardDTO card) {
+	public CardDTO update(@PathVariable Integer id,@RequestBody CardDTO card) {
 		return this.cardService.update(id,card);
 	}
 	
@@ -54,5 +54,5 @@ public class CardRestCrt {
 	public Iterable<CardDTO> getCardsBuyable() {
 		return this.cardService.getCardsBuyable();
 	}
-
+	
 }

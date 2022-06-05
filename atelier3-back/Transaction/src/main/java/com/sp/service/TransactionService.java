@@ -29,6 +29,7 @@ public class TransactionService {
 				// Mise a jour du détenteur de la carte et de son statut a vendre ou non
                 card.setPlayerId(buyer.getId());
                 card.setIsToSell(false);
+                card.setPrice(0);
                 Comm.postRemoteCard(card);
                 
                 // Mise a jour des portes monnaie du buyer et du seller

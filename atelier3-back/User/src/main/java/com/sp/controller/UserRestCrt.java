@@ -32,8 +32,8 @@ public class UserRestCrt {
 	}
 	
 	@PostMapping("/user/{id}")
-	public UserDTO update(@PathVariable int id, UserDTO user) {
-		return this.userService.update(user);
+	public UserDTO update(@PathVariable int id,@RequestBody UserDTO user) {
+		return this.userService.update(id,user);
 	}
 	
 	@GetMapping("/user/{id}")

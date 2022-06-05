@@ -66,8 +66,9 @@ public class UserService {
        return list;
     } 
     
-    public UserDTO update(UserDTO userDTO) {
+    public UserDTO update(Integer id,UserDTO userDTO) {
     	User user = this.UserDTOToUser(userDTO);
+    	user.setId(id);
 		User userupdate = this.userRepository.save(user);
 		return this.UserToUserDTO(userupdate);
     }

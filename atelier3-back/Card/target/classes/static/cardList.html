@@ -47,6 +47,35 @@
 </div>
 
     <div include-html="part/header.html"></div>
+	<div class="ui clearing segment">
+    <h3 class="ui left floated header">
+        <i class="money icon"></i>
+        <div class="content">
+            Card Shop
+            <div class="sub header">Sell or Buy Card</div>
+        </div>
+    </h3>
+    <h3 class="profil ui right floated header">
+        <div class="icons floated header">
+            <i onclick="header.goShop()" class="shop icon"></i>
+            <i onclick="header.goMyCard()" class="user circle outline icon"></i>
+            <button class="ui button" onclick="header.disconnect()">Disconnect</button>
+        </div>
+        <div>
+            <div id="user-info">
+            </div>
+            <template id="template">
+                <div class="content">
+
+                    <span id="userNameId">{{firstname}} {{lastname}}</span>
+                    <div class="sub header"><span>{{balance}}</span>$</div>
+                </div>
+            </template>
+        </div>
+    </h3>
+</div>
+
+    
 
     <div class="ui grid">
         <div class="ten wide column">
